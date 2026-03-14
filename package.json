@@ -1,49 +1,49 @@
 {
-  "name": "aqa_test_task",
-  "version": "1.0.0",
-  "description": "Simple UI test for the \"AQA Test task\" page",
-  "keywords": [
-    "AQA",
-    "test",
-    "playwright"
-  ],
-  "homepage": "https://github.com/renicsemenov/AQA_Test_task#readme",
-  "bugs": {
-    "url": "https://github.com/renicsemenov/AQA_Test_task/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/renicsemenov/AQA_Test_task.git"
-  },
-  "license": "ISC",
-  "author": "Renat Semenov",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
+    "name": "aqa_test_task",
+    "version": "1.0.0",
+    "description": "Simple UI test for the \"AQA Test task\" page",
+    "keywords": [
+        "AQA",
+        "test",
+        "playwright"
     ],
-    "*.{json,md,yml}": [
-      "prettier --write"
-    ]
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "dotenv": "^17.3.1",
-    "eslint": "^10.0.3",
-    "eslint-config-prettier": "^10.1.8",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1"
-  }
+    "homepage": "https://github.com/renicsemenov/AQA_Test_task#readme",
+    "bugs": {
+        "url": "https://github.com/renicsemenov/AQA_Test_task/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/renicsemenov/AQA_Test_task.git"
+    },
+    "license": "ISC",
+    "author": "Renat Semenov",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "npx playwright test",
+        "test:ui": "npx playwright test --ui",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md,yml}": [
+            "prettier --write"
+        ]
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.58.2",
+        "dotenv": "^17.3.1",
+        "eslint": "^10.0.3",
+        "eslint-config-prettier": "^10.1.8",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.4.0",
+        "prettier": "^3.8.1"
+    }
 }
