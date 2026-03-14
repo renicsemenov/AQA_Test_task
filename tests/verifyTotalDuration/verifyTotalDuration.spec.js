@@ -1,10 +1,7 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '../../helpers/base.js';
+import { parseDurationToSeconds } from '../../helpers/utils.js';
 
 test.describe('Verify total duration', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('/');
-    });
-
     test('Add track and verify total duration', async ({ page }) => {
         const addTrackButton = page
             .locator('#tracklist')
@@ -18,8 +15,7 @@ test.describe('Verify total duration', () => {
         await expect(playList).toBeVisible();
         const trackDurationText = playList.locator('>div>div>div:nth-child(3)');
         const trackDuration = await trackDurationText.textContent();
-        const [minutes, seconds] = trackDuration.split(':').map(Number);
-        const totalSeconds = minutes * 60 + seconds;
+        const totalSeconds = parseDurationToSeconds(trackDuration);
 
         // Verify that the total duration is updated correctly
         const playlistDuration = page.locator('#playlist-duration');

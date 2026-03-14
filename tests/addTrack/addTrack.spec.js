@@ -1,23 +1,13 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '../../helpers/base.js';
 
 const TRACK_NAME = 'Autumn Leaves';
 
 test.describe('Add track', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('/');
-    });
-
-    test('You Playlist is absent by default', async ({ page }) => {
+    test('playlist section is not shown by default', async ({ page }) => {
         await expect(page.getByText('Your Playlist')).not.toBeVisible();
     });
 
-    test('Total duration should have test - No tracks on playlist', async ({ page }) => {
-        const playlistDuration = page.locator('#playlist-duration');
-        await expect(playlistDuration).toBeVisible();
-        await expect(playlistDuration).toHaveText('No tracks on playlist');
-    });
-
-    test('add track', async ({ page }) => {
+    test('adds a track to the playlist', async ({ page }) => {
         const trackList = page.locator('#tracklist');
         await expect(trackList).toBeVisible();
 

@@ -1,14 +1,7 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '../../helpers/base.js';
+import { TRACK_NAMES } from '../../helpers/constants.js';
 
 test.describe('Search', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('/');
-    });
-
-    test('has correct page title', async ({ page }) => {
-        await expect(page).toHaveTitle(/AQA Test task/i);
-    });
-
     test('displays the song list', async ({ page }) => {
         const trackList = page.locator('#tracklist');
         await expect(trackList).toBeVisible();
@@ -23,12 +16,11 @@ test.describe('Search', () => {
         await expect(searchInput).toHaveValue(/Summer/i);
 
         // Verify that the matching song is visible
-        await expect(page.getByText('Summer Breeze')).toBeVisible();
+        await expect(page.getByText(TRACK_NAMES[0])).toBeVisible();
         // Verify that non-matching songs are not visible
-        await expect(page.getByText('Autumn Leaves')).not.toBeVisible();
-        await expect(page.getByText('Winter Winds')).not.toBeVisible();
-        await expect(page.getByText('Spring Dance')).not.toBeVisible();
-        await expect(page.getByText('Rainy Mood')).not.toBeVisible();
+        for (const name of TRACK_NAMES.slice(1)) {
+            await expect(page.getByText(name)).not.toBeVisible();
+        }
     });
 
     test('displays no results message when search does not match any songs', async ({ page }) => {

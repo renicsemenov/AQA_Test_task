@@ -4,7 +4,7 @@ Simple UI test for the "AQA Test task" page built with [Playwright](https://play
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) v18+
+- [Node.js](https://nodejs.org/) v18+ (ES Modules required)
 - npm v9+
 
 ## Installation
@@ -34,9 +34,23 @@ The `BASE_URL` is loaded automatically by `dotenv` and used as `baseURL` in the 
 npm test
 ```
 
+## Project Structure
+
+```
+helpers/
+  base.js          — shared Playwright fixtures (page setup)
+  constants.js     — shared test data (TRACK_NAMES, EMPTY_PLAYLIST_TEXT)
+  utils.js         — shared utility functions (parseDurationToSeconds)
+tests/
+  home.spec.js                            — Home page suite
+  search/search.spec.js                   — Search functionality suite
+  addTrack/addTrack.spec.js               — Add track suite
+  verifyTotalDuration/verifyTotalDuration.spec.js — Total duration suite
+```
+
 ## Test Coverage
 
-Tests are located in the `tests/` directory. Current suite (`home.spec.js`):
+### Home page (`tests/home.spec.js`)
 
 | Test                                             | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------------- |
@@ -45,6 +59,27 @@ Tests are located in the `tests/` directory. Current suite (`home.spec.js`):
 | Displays the search input                        | Search text field is present                          |
 | Displays the tracklist with songs                | All 5 tracks are visible in the list                  |
 | Shows empty playlist with no duration by default | Playlist is empty and shows "No tracks on playlist"   |
+
+### Search (`tests/search/search.spec.js`)
+
+| Test                                                             | Description                                      |
+| ---------------------------------------------------------------- | ------------------------------------------------ |
+| Displays the song list                                           | Tracklist is visible and contains 5 items        |
+| Filters songs matching the search query                          | Only matching track remains visible after typing |
+| Displays no results message when search does not match any songs | "Not found" message appears for unmatched query  |
+
+### Add track (`tests/addTrack/addTrack.spec.js`)
+
+| Test                                     | Description                                                |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| Playlist section is not shown by default | "Your Playlist" heading is hidden on load                  |
+| Adds a track to the playlist             | Clicking "+" adds the track and shows the playlist section |
+
+### Verify total duration (`tests/verifyTotalDuration/verifyTotalDuration.spec.js`)
+
+| Test                                | Description                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| Add track and verify total duration | Adds first track and checks the duration counter matches the track's duration in seconds |
 
 ## Code Quality
 

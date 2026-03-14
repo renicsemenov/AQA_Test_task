@@ -17,7 +17,7 @@
     },
     "license": "ISC",
     "author": "Renat Semenov",
-    "type": "commonjs",
+    "type": "module",
     "main": "index.js",
     "scripts": {
         "test": "npx playwright test",

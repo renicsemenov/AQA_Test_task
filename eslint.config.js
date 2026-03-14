@@ -1,6 +1,6 @@
-const prettier = require('eslint-config-prettier');
+import prettier from 'eslint-config-prettier';
 
-module.exports = [
+export default [
     {
         ignores: ['test-results/', 'playwright-report/', 'blob-report/', 'playwright/.cache/'],
     },
@@ -8,13 +8,8 @@ module.exports = [
         files: ['**/*.js'],
         languageOptions: {
             ecmaVersion: 2022,
-            sourceType: 'commonjs',
+            sourceType: 'module',
             globals: {
-                require: 'readonly',
-                module: 'readonly',
-                exports: 'readonly',
-                __dirname: 'readonly',
-                __filename: 'readonly',
                 process: 'readonly',
                 console: 'readonly',
             },
