@@ -1,6 +1,7 @@
-import { test, expect } from '../../helpers/base.js';
+import { expect, test } from '../../helpers/base.js';
+import { TRACK_NAMES } from '../../helpers/constants.js';
 
-const TRACK_NAME = 'Autumn Leaves';
+const TRACK_NAME = TRACK_NAMES[1]; // 'Autumn Leaves'
 
 test.describe('Add track', () => {
     test('playlist section is not shown by default', async ({ page }) => {
