@@ -42,15 +42,43 @@ helpers/
   constants.js     — shared test data (TRACK_NAMES, EMPTY_PLAYLIST_TEXT)
   utils.js         — shared utility functions (parseDurationToSeconds)
 tests/
-  home.spec.js                            — Home page suite
-  search/search.spec.js                   — Search functionality suite
-  addTrack/addTrack.spec.js               — Add track suite
-  verifyTotalDuration/verifyTotalDuration.spec.js — Total duration suite
+  home.spec.js                                          — Home page suite
+  search/search.spec.js                                 — Search functionality suite
+  addTrack/addTrack.spec.js                             — Add track suite
+  verifyTotalDuration/verifyTotalDuration.spec.js       — Total duration suite
+  workWIthGroup/workWithGroup.spec.js                   — Work with group of tracks suite
 ```
 
 ## Test Coverage
 
-### Home page (`tests/home.spec.js`)
+### Main Tests
+
+#### Search (`tests/search/search.spec.js`)
+
+| Test                                                             | Description                                      |
+| ---------------------------------------------------------------- | ------------------------------------------------ |
+| Displays the song list                                           | Tracklist is visible and contains 5 items        |
+| Filters songs matching the search query                          | Only matching track remains visible after typing |
+| Displays no results message when search does not match any songs | "Not found" message appears for unmatched query  |
+
+#### Add track (`tests/addTrack/addTrack.spec.js`)
+
+| Test                                     | Description                                                |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| Playlist section is not shown by default | "Your Playlist" heading is hidden on load                  |
+| Adds a track to the playlist             | Clicking "+" adds the track and shows the playlist section |
+
+#### Verify total duration (`tests/verifyTotalDuration/verifyTotalDuration.spec.js`)
+
+| Test                                | Description                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- |
+| Add track and verify total duration | Adds first track and checks the duration counter matches the track's duration in seconds |
+
+### For Fun
+
+> These tests go beyond the original task requirements and were added for extra practice.
+
+#### Home page (`tests/home.spec.js`)
 
 | Test                                             | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------------- |
@@ -60,26 +88,11 @@ tests/
 | Displays the tracklist with songs                | All 5 tracks are visible in the list                  |
 | Shows empty playlist with no duration by default | Playlist is empty and shows "No tracks on playlist"   |
 
-### Search (`tests/search/search.spec.js`)
+#### Work with group of tracks (`tests/workWIthGroup/workWithGroup.spec.js`)
 
-| Test                                                             | Description                                      |
-| ---------------------------------------------------------------- | ------------------------------------------------ |
-| Displays the song list                                           | Tracklist is visible and contains 5 items        |
-| Filters songs matching the search query                          | Only matching track remains visible after typing |
-| Displays no results message when search does not match any songs | "Not found" message appears for unmatched query  |
-
-### Add track (`tests/addTrack/addTrack.spec.js`)
-
-| Test                                     | Description                                                |
-| ---------------------------------------- | ---------------------------------------------------------- |
-| Playlist section is not shown by default | "Your Playlist" heading is hidden on load                  |
-| Adds a track to the playlist             | Clicking "+" adds the track and shows the playlist section |
-
-### Verify total duration (`tests/verifyTotalDuration/verifyTotalDuration.spec.js`)
-
-| Test                                | Description                                                                              |
-| ----------------------------------- | ---------------------------------------------------------------------------------------- |
-| Add track and verify total duration | Adds first track and checks the duration counter matches the track's duration in seconds |
+| Test                                          | Description                                                                                                                                                                           |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add multiple tracks and verify total duration | Selects multiple tracks via checkboxes, adds them with "Add N tracks", verifies all appear in playlist with correct total duration, then removes all and confirms playlist is cleared |
 
 ## Code Quality
 
