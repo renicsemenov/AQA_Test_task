@@ -2,6 +2,8 @@
 
 Simple UI test for the "AQA Test task" page built with [Playwright](https://playwright.dev/).
 
+> **Target website:** [https://vite-react-alpha-lemon.vercel.app/](https://vite-react-alpha-lemon.vercel.app/)
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/) v18+ (ES Modules required)
